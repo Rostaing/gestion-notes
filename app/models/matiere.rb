@@ -1,7 +1,7 @@
 class Matiere < ApplicationRecord
     acts_as_paranoid
-    validates :code, :libelle, :coefficient, presence: true
-    validates :code, :libelle, uniqueness: true
+    validates :coefficient, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 25 }
+    validates :code, :libelle, uniqueness: true, presence: true
     has_many :clas_matieres, dependent: :destroy
     has_many :clas, through: :clas_matieres
     has_one :evaluation, dependent: :destroy

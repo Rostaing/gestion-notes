@@ -3,7 +3,7 @@ class Api::V1::RoleUsersController < ApplicationController
 
   # GET /role_users
   def index
-    @role_users = RoleUser.all
+    @role_users = RoleUser.all.order(created_at: :desc)
 
     render json: @role_users
   end

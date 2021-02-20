@@ -3,7 +3,7 @@ class Api::V1::MentionsController < ApplicationController
 
   # GET /mentions
   def index
-    @mentions = Mention.all
+    @mentions = Mention.all.order(created_at: :desc)
 
     render json: @mentions
   end

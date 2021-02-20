@@ -3,7 +3,7 @@ class Api::V1::PermissionsController < ApplicationController
 
   # GET /permissions
   def index
-    @permissions = Permission.all
+    @permissions = Permission.all.order(created_at: :desc)
 
     render json: @permissions
   end

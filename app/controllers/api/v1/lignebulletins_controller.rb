@@ -3,7 +3,7 @@ class Api::V1::LignebulletinsController < ApplicationController
 
   # GET /lignebulletins
   def index
-    @lignebulletins = Lignebulletin.all
+    @lignebulletins = Lignebulletin.all.order(created_at: :desc)
 
     render json: @lignebulletins
   end

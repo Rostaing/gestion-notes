@@ -3,7 +3,7 @@ class Api::V1::BulletinsController < ApplicationController
 
   # GET /bulletins
   def index
-    @bulletins = Bulletin.all
+    @bulletins = Bulletin.all.order(created_at: :desc)
 
     render json: @bulletins
   end

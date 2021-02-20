@@ -3,7 +3,7 @@ class Api::V1::EvaluationsController < ApplicationController
 
   # GET /evaluations
   def index
-    @evaluations = Evaluation.all
+    @evaluations = Evaluation.all.order(created_at: :desc)
 
     render json: @evaluations
   end

@@ -4,7 +4,7 @@ class Api::V1::FilieresController < ApplicationController
 
   # GET /filieres
   def index
-    @filieres = Filiere.all
+    @filieres = Filiere.all.order(created_at: :desc)
 
     render json: @filieres
   end

@@ -3,7 +3,7 @@ class Api::V1::PermissionUsersController < ApplicationController
 
   # GET /permission_users
   def index
-    @permission_users = PermissionUser.all
+    @permission_users = PermissionUser.all.order(created_at: :desc)
 
     render json: @permission_users
   end
