@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  matricule: MyString
+  nom: MyString
+  prenom: MyString
+  sexe: MyString
+  email: MyString
+  telephone: MyString
+  bp: MyString
+  date_naissance: 2021-02-16
+  lieu_naissance: MyString
+  rue: MyString
+  quartier: MyString
+  cla: one
+  country: one
+  anneeacademique: one
+
+two:
+  matricule: MyString
+  nom: MyString
+  prenom: MyString
+  sexe: MyString
+  email: MyString
+  telephone: MyString
+  bp: MyString
+  date_naissance: 2021-02-16
+  lieu_naissance: MyString
+  rue: MyString
+  quartier: MyString
+  cla: two
+  country: two
+  anneeacademique: two

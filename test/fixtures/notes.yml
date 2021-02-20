@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  valeur: 1.5
+  etudiant: one
+  evaluation: one
+  mention: one
+
+two:
+  valeur: 1.5
+  etudiant: two
+  evaluation: two
+  mention: two

@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_edition: 2021-02-05
+  date_retrait: 2021-02-05
+  moyenne_etudiant: 1.5
+  moyenne_max_clas: 1.5
+  moyenne_min_clas: 1.5
+  effectif_clas: 1
+  rang_etudiant: 1
+  decision_conseil_prof: MyString
+  etudiant: one
+  mention: one
+
+two:
+  date_edition: 2021-02-05
+  date_retrait: 2021-02-05
+  moyenne_etudiant: 1.5
+  moyenne_max_clas: 1.5
+  moyenne_min_clas: 1.5
+  effectif_clas: 1
+  rang_etudiant: 1
+  decision_conseil_prof: MyString
+  etudiant: two
+  mention: two

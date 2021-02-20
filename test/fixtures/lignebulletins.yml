@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  matiere: MyString
+  coefficient: 1
+  moyenne_clas: 1.5
+  moyenne_etudiant: 1.5
+  bulletin: one
+
+two:
+  matiere: MyString
+  coefficient: 1
+  moyenne_clas: 1.5
+  moyenne_etudiant: 1.5
+  bulletin: two
