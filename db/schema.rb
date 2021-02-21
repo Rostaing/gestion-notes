@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_17_213328) do
+ActiveRecord::Schema.define(version: 2021_02_20_233519) do
 
   create_table "anneeacademiques", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
     t.string "libelle"
@@ -18,9 +18,8 @@ ActiveRecord::Schema.define(version: 2021_02_17_213328) do
     t.date "date_fin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "status", default: 0, null: false
-    t.integer "locale", default: 0, null: false
     t.datetime "deleted_at"
+    t.string "statut", default: "En cours", null: false
     t.index ["deleted_at"], name: "index_anneeacademiques_on_deleted_at"
   end
 

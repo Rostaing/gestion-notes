@@ -1,10 +1,10 @@
 class Anneeacademique < ApplicationRecord
     acts_as_paranoid
-    extend SimplestStatus
+    # extend SimplestStatus
 
-    statuses :draft, :preview, :published, :archived
+    # statuses :draft, :preview, :published, :archived
 
-    simple_status :locale, [:english, :spanish, :russian, :french]
+    # simple_status :locale, [:english, :spanish, :russian, :french]
 
     validates :libelle, :date_debut, :date_fin, presence: true, uniqueness: true
     has_many :evaluations, dependent: :destroy

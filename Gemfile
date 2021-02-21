@@ -22,7 +22,7 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'simple_token_authentication', '~> 1.17'
 gem 'carrierwave', '~> 2.1'
 gem 'mini_magick', '~> 4.11'
-gem 'simplest_status', '~> 1.0'
+# gem 'simplest_status', '~> 1.0'
 gem 'paranoia', '~> 2.4', '>= 2.4.3'
 
 # Use Active Storage variant

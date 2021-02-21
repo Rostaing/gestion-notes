@@ -46,6 +46,6 @@ class Api::V1::AnneeacademiquesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def anneeacademique_params
-      params.require(:anneeacademique).permit(:libelle, :date_debut, :date_fin, :status, :locale, :deleted_at)
+      params.require(:anneeacademique).permit(:libelle, :date_debut, :date_fin, :deleted_at, :statut)
     end
 end
