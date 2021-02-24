@@ -4,8 +4,12 @@ one:
   code: MyString
   libelle: MyString
   coefficient: 1
+  cla: one
+  enseignant: one
 
 two:
   code: MyString
   libelle: MyString
   coefficient: 1
+  cla: two
+  enseignant: two

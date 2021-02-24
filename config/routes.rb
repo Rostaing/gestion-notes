@@ -1,20 +1,13 @@
 Rails.application.routes.draw do
-  # devise_for :users
+  # Routes for Rails API
   namespace :api, defaults: {format: :json} do
-    namespace :v1 do
+    namespace :v1 do  
       resources :users
-      devise_scope :user do
-        
-        # post "sign_up", to: "registrations#create"
-        post "sign_in", to: "sessions#create"
-      end
       resources :systemes
       resources :filieres
       resources :clas
       resources :matieres
-      resources :clas_matieres
       resources :anneeacademiques
-      resources :typeevaluations
       resources :evaluations
       resources :countries
       resources :enseignants

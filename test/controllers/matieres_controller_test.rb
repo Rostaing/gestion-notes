@@ -12,7 +12,7 @@ class MatieresControllerTest < ActionDispatch::IntegrationTest
 
   test "should create matiere" do
     assert_difference('Matiere.count') do
-      post matieres_url, params: { matiere: { code: @matiere.code, coefficient: @matiere.coefficient, libelle: @matiere.libelle } }, as: :json
+      post matieres_url, params: { matiere: { cla_id: @matiere.cla_id, code: @matiere.code, coefficient: @matiere.coefficient, enseignant_id: @matiere.enseignant_id, libelle: @matiere.libelle } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class MatieresControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update matiere" do
-    patch matiere_url(@matiere), params: { matiere: { code: @matiere.code, coefficient: @matiere.coefficient, libelle: @matiere.libelle } }, as: :json
+    patch matiere_url(@matiere), params: { matiere: { cla_id: @matiere.cla_id, code: @matiere.code, coefficient: @matiere.coefficient, enseignant_id: @matiere.enseignant_id, libelle: @matiere.libelle } }, as: :json
     assert_response 200
   end
 

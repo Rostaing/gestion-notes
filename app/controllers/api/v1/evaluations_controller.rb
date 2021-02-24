@@ -3,7 +3,7 @@ class Api::V1::EvaluationsController < ApplicationController
 
   # GET /evaluations
   def index
-    @evaluations = Evaluation.all.order(created_at: :desc)
+    @evaluations = Evaluation.all
 
     render json: @evaluations
   end
@@ -46,6 +46,6 @@ class Api::V1::EvaluationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def evaluation_params
-      params.require(:evaluation).permit(:date_evaluation, :matiere_id, :typeevaluation_id, :anneeacademique_id, :deleted_at)
+      params.require(:evaluation).permit(:date_evaluation, :typeevaluation, :cla_id, :matiere_id, :enseignant_id, :anneeacademique_id)
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_20_233519) do
+ActiveRecord::Schema.define(version: 2021_02_23_150040) do
 
   create_table "anneeacademiques", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
     t.string "libelle"
@@ -51,17 +51,6 @@ ActiveRecord::Schema.define(version: 2021_02_20_233519) do
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_clas_on_deleted_at"
     t.index ["filiere_id"], name: "index_clas_on_filiere_id"
-  end
-
-  create_table "clas_matieres", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
-    t.bigint "cla_id", null: false
-    t.bigint "matiere_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.datetime "deleted_at"
-    t.index ["cla_id"], name: "index_clas_matieres_on_cla_id"
-    t.index ["deleted_at"], name: "index_clas_matieres_on_deleted_at"
-    t.index ["matiere_id"], name: "index_clas_matieres_on_matiere_id"
   end
 
   create_table "countries", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
@@ -137,16 +126,19 @@ ActiveRecord::Schema.define(version: 2021_02_20_233519) do
 
   create_table "evaluations", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
     t.date "date_evaluation"
+    t.string "typeevaluation"
+    t.bigint "cla_id", null: false
     t.bigint "matiere_id", null: false
-    t.bigint "typeevaluation_id", null: false
+    t.bigint "enseignant_id", null: false
     t.bigint "anneeacademique_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
     t.index ["anneeacademique_id"], name: "index_evaluations_on_anneeacademique_id"
+    t.index ["cla_id"], name: "index_evaluations_on_cla_id"
     t.index ["deleted_at"], name: "index_evaluations_on_deleted_at"
+    t.index ["enseignant_id"], name: "index_evaluations_on_enseignant_id"
     t.index ["matiere_id"], name: "index_evaluations_on_matiere_id"
-    t.index ["typeevaluation_id"], name: "index_evaluations_on_typeevaluation_id"
   end
 
   create_table "filieres", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
@@ -259,8 +251,10 @@ ActiveRecord::Schema.define(version: 2021_02_20_233519) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
     t.string "authentication_token", limit: 30
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

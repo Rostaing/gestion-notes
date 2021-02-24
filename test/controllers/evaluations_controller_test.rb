@@ -12,7 +12,7 @@ class EvaluationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create evaluation" do
     assert_difference('Evaluation.count') do
-      post evaluations_url, params: { evaluation: { anneeacademique_id: @evaluation.anneeacademique_id, date_evaluation: @evaluation.date_evaluation, matiere_id: @evaluation.matiere_id, typeevaluation_id: @evaluation.typeevaluation_id } }, as: :json
+      post evaluations_url, params: { evaluation: { anneeacademique_id: @evaluation.anneeacademique_id, cla_id: @evaluation.cla_id, date_evaluation: @evaluation.date_evaluation, enseignant_id: @evaluation.enseignant_id, matiere_id: @evaluation.matiere_id, typeevaluation: @evaluation.typeevaluation } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class EvaluationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update evaluation" do
-    patch evaluation_url(@evaluation), params: { evaluation: { anneeacademique_id: @evaluation.anneeacademique_id, date_evaluation: @evaluation.date_evaluation, matiere_id: @evaluation.matiere_id, typeevaluation_id: @evaluation.typeevaluation_id } }, as: :json
+    patch evaluation_url(@evaluation), params: { evaluation: { anneeacademique_id: @evaluation.anneeacademique_id, cla_id: @evaluation.cla_id, date_evaluation: @evaluation.date_evaluation, enseignant_id: @evaluation.enseignant_id, matiere_id: @evaluation.matiere_id, typeevaluation: @evaluation.typeevaluation } }, as: :json
     assert_response 200
   end
 

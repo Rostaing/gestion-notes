@@ -6,4 +6,6 @@ class Enseignant < ApplicationRecord
   validates :matricule, :sexe, :email, :telephone, :bp, :date_naissance, :lieu_naissance, :rue, :quartier, presence: true
   validates :matricule, :email, uniqueness: true
   belongs_to :country
+  has_many :evaluations, dependent: :destroy
+  # has_many :matieres, dependent: :destroy
 end

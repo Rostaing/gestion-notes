@@ -46,6 +46,6 @@ class Api::V1::MatieresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def matiere_params
-      params.require(:matiere).permit(:code, :libelle, :coefficient, :deleted_at)
+      params.require(:matiere).permit(:code, :libelle, :coefficient)
     end
 end
