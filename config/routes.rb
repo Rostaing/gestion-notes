@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   # Routes for Rails API
+  resources :sessions, only: [:create]
+  resources :registrations, only: [:create]
+  delete :logout, to: "sessions#logout"
+  get :logged_in, to: "sessions#logged_in"
   namespace :api, defaults: {format: :json} do
-    namespace :v1 do  
-      resources :users
+    namespace :v1 do
       resources :systemes
       resources :filieres
       resources :clas

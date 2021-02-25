@@ -8,6 +8,6 @@ class Etudiant < ApplicationRecord
   belongs_to :cla
   belongs_to :country
   belongs_to :anneeacademique
-  has_many :notes
+  has_many :notes, dependent: :destroy
   has_many :etudiants, through: :notes
 end

@@ -18,8 +18,7 @@ gem 'puma', '~> 5.0'
 
 # Backend Gems
 gem 'active_model_serializers', '~> 0.10.12'
-gem 'devise', '~> 4.7', '>= 4.7.3'
-gem 'simple_token_authentication', '~> 1.17'
+gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 gem 'carrierwave', '~> 2.1'
 gem 'mini_magick', '~> 4.11'
 # gem 'simplest_status', '~> 1.0'
@@ -32,7 +31,7 @@ gem 'paranoia', '~> 2.4', '>= 2.4.3'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem 'rack-cors'
+gem 'rack-cors' #, :require => 'rack/cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
