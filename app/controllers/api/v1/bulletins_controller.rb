@@ -46,6 +46,6 @@ class Api::V1::BulletinsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bulletin_params
-      params.require(:bulletin).permit(:date_edition, :date_retrait, :moyenne_etudiant, :moyenne_max_clas, :moyenne_min_clas, :effectif_clas, :rang_etudiant, :decision_conseil_prof, :etudiant_id, :mention_id, :deleted_at)
+      params.require(:bulletin).permit(:date_edition, :date_retrait, :moyenne_etudiant, :moyenne_max_clas, :moyenne_min_clas, :effectif_clas, :rang_etudiant, :decision_conseil_prof, :etudiant_id, :deleted_at, :mentionbulletin)
     end
 end

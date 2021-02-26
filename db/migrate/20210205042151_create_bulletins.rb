@@ -10,7 +10,7 @@ class CreateBulletins < ActiveRecord::Migration[6.1]
       t.integer :rang_etudiant
       t.string :decision_conseil_prof
       t.references :etudiant, null: false, foreign_key: true
-      t.references :mention, null: false, foreign_key: true
+      # t.references :mention, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_031532) do
+ActiveRecord::Schema.define(version: 2021_02_26_012859) do
 
   create_table "anneeacademiques", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
     t.string "libelle"
@@ -187,14 +187,13 @@ ActiveRecord::Schema.define(version: 2021_02_25_031532) do
     t.float "valeur"
     t.bigint "etudiant_id", null: false
     t.bigint "evaluation_id", null: false
-    t.bigint "mention_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.string "notemention"
     t.index ["deleted_at"], name: "index_notes_on_deleted_at"
     t.index ["etudiant_id"], name: "index_notes_on_etudiant_id"
     t.index ["evaluation_id"], name: "index_notes_on_evaluation_id"
-    t.index ["mention_id"], name: "index_notes_on_mention_id"
   end
 
   create_table "permission_users", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|

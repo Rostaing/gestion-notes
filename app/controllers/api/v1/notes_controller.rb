@@ -15,7 +15,7 @@ class Api::V1::NotesController < ApplicationController
 
   # POST /notes
   def create
-    @note = Note.new(note_params)
+    @note = Note.insert_all(note_params)
 
     if @note.save
       render json: @note, status: :created, location: api_v1_note_url(@note)
@@ -46,6 +46,6 @@ class Api::V1::NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:valeur, :etudiant_id, :evaluation_id, :mention_id, :deleted_at)
+      params.require(:note).permit(:valeur, :etudiant_id, :evaluation_id, :deleted_at, :notemention)
     end
 end

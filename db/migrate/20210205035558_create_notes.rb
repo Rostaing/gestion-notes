@@ -4,7 +4,7 @@ class CreateNotes < ActiveRecord::Migration[6.1]
       t.float :valeur
       t.references :etudiant, null: false, foreign_key: true
       t.references :evaluation, null: false, foreign_key: true
-      t.references :mention, null: false, foreign_key: true
+      # t.references :mention, null: false, foreign_key: true
 
       t.timestamps
     end
