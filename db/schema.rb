@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_012859) do
+ActiveRecord::Schema.define(version: 2021_03_11_224658) do
 
   create_table "anneeacademiques", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
     t.string "libelle"
@@ -33,13 +33,11 @@ ActiveRecord::Schema.define(version: 2021_02_26_012859) do
     t.integer "rang_etudiant"
     t.string "decision_conseil_prof"
     t.bigint "etudiant_id", null: false
-    t.bigint "mention_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_bulletins_on_deleted_at"
     t.index ["etudiant_id"], name: "index_bulletins_on_etudiant_id"
-    t.index ["mention_id"], name: "index_bulletins_on_mention_id"
   end
 
   create_table "clas", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
@@ -63,19 +61,17 @@ ActiveRecord::Schema.define(version: 2021_02_26_012859) do
     t.index ["deleted_at"], name: "index_countries_on_deleted_at"
   end
 
-  create_table "ens_clas_matieres", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
-    t.bigint "anneeacademique_id", null: false
-    t.bigint "enseignant_id", null: false
+  create_table "ens_clas_matieres", charset: "utf8mb4", options: "ENGINE=MyISAM", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.bigint "cla_id", null: false
     t.bigint "matiere_id", null: false
+    t.bigint "anneeacademique_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "deleted_at"
     t.index ["anneeacademique_id"], name: "index_ens_clas_matieres_on_anneeacademique_id"
     t.index ["cla_id"], name: "index_ens_clas_matieres_on_cla_id"
-    t.index ["deleted_at"], name: "index_ens_clas_matieres_on_deleted_at"
-    t.index ["enseignant_id"], name: "index_ens_clas_matieres_on_enseignant_id"
     t.index ["matiere_id"], name: "index_ens_clas_matieres_on_matiere_id"
+    t.index ["user_id"], name: "index_ens_clas_matieres_on_user_id"
   end
 
   create_table "enseignants", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
@@ -124,21 +120,19 @@ ActiveRecord::Schema.define(version: 2021_02_26_012859) do
     t.index ["deleted_at"], name: "index_etudiants_on_deleted_at"
   end
 
-  create_table "evaluations", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
+  create_table "evaluations", charset: "utf8mb4", options: "ENGINE=MyISAM", force: :cascade do |t|
     t.date "date_evaluation"
     t.string "typeevaluation"
     t.bigint "cla_id", null: false
     t.bigint "matiere_id", null: false
-    t.bigint "enseignant_id", null: false
     t.bigint "anneeacademique_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "deleted_at"
     t.index ["anneeacademique_id"], name: "index_evaluations_on_anneeacademique_id"
     t.index ["cla_id"], name: "index_evaluations_on_cla_id"
-    t.index ["deleted_at"], name: "index_evaluations_on_deleted_at"
-    t.index ["enseignant_id"], name: "index_evaluations_on_enseignant_id"
     t.index ["matiere_id"], name: "index_evaluations_on_matiere_id"
+    t.index ["user_id"], name: "index_evaluations_on_user_id"
   end
 
   create_table "filieres", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
@@ -234,13 +228,25 @@ ActiveRecord::Schema.define(version: 2021_02_26_012859) do
     t.index ["deleted_at"], name: "index_systemes_on_deleted_at"
   end
 
-  create_table "users", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", options: "ENGINE=MyISAM", force: :cascade do |t|
+    t.string "nom"
+    t.string "prenom"
+    t.string "sexe"
     t.string "email"
     t.string "password_digest"
+    t.string "matricule"
+    t.string "telephone"
+    t.string "bp"
+    t.date "datenaissance"
+    t.string "lieunaissance"
+    t.string "quartier"
+    t.bigint "country_id", null: false
+    t.bigint "role_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_users_on_deleted_at"
+    t.string "photo"
+    t.index ["country_id"], name: "index_users_on_country_id"
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
 end

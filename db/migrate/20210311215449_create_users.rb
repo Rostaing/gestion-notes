@@ -1,18 +1,19 @@
-class CreateEnseignants < ActiveRecord::Migration[6.1]
+class CreateUsers < ActiveRecord::Migration[6.1]
   def change
-    create_table :enseignants do |t|
-      t.string :matricule
+    create_table :users do |t|
       t.string :nom
       t.string :prenom
       t.string :sexe
       t.string :email
+      t.string :password_digest
+      t.string :matricule
       t.string :telephone
       t.string :bp
-      t.date :date_naissance
-      t.string :lieu_naissance
-      t.string :rue
+      t.date :datenaissance
+      t.string :lieunaissance
       t.string :quartier
       t.references :country, null: false, foreign_key: true
+      t.references :role, null: false, foreign_key: true
 
       t.timestamps
     end

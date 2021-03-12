@@ -7,6 +7,11 @@ class Api::V1::AnneeacademiquesController < ApplicationController
 
     render json: @anneeacademiques
   end
+  # def index1
+  #   @anneeacademiques = Anneeacademique.where(statut: "En cours").order(created_at: :desc)
+
+  #   render json: @anneeacademiques
+  # end
 
   # GET /anneeacademiques/1
   def show

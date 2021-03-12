@@ -4,4 +4,6 @@ class Country < ApplicationRecord
     validates :code, uniqueness: true
     has_many :enseignants, dependent: :destroy
     has_many :etudiants, dependent: :destroy
+
+    # has_many :countries
 end

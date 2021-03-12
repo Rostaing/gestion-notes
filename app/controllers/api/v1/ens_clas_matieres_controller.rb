@@ -46,6 +46,6 @@ class Api::V1::EnsClasMatieresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ens_clas_matiere_params
-      params.require(:ens_clas_matiere).permit(:anneeacademique_id, :enseignant_id, :cla_id, :matiere_id, :deleted_at)
+      params.require(:ens_clas_matiere).permit(:user_id, :cla_id, :matiere_id, :anneeacademique_id)
     end
 end

@@ -19,6 +19,7 @@ gem 'puma', '~> 5.0'
 # Backend Gems
 gem 'active_model_serializers', '~> 0.10.12'
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
+gem 'jwt' #, '~> 2.2', '>= 2.2.2'
 gem 'carrierwave', '~> 2.1'
 gem 'mini_magick', '~> 4.11'
 # gem 'simplest_status', '~> 1.0'
