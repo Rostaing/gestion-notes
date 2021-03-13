@@ -10,5 +10,4 @@ class Matiere < ApplicationRecord
   has_many :clas, through: :ens_clas_matieres
   has_many :enseignants, through: :ens_clas_matieres
   belongs_to :cla
-  belongs_to :enseignant
 end

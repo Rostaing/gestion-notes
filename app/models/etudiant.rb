@@ -9,5 +9,5 @@ class Etudiant < ApplicationRecord
   belongs_to :country
   belongs_to :anneeacademique
   has_many :notes, dependent: :destroy
-  has_many :etudiants, through: :notes
+  has_many :evaluations, through: :notes
 end

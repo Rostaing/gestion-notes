@@ -18,4 +18,7 @@ class User < ApplicationRecord
 
   belongs_to :country
   belongs_to :role
+
+  has_many :permission_users
+  has_many :permissions, through: :permission_users
 end

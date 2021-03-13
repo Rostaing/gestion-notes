@@ -3,4 +3,7 @@ class EtudiantSerializer < ActiveModel::Serializer
   has_one :cla
   has_one :country
   has_one :anneeacademique
+
+  has_many :notes
+  has_many :evaluations, through: :notes
 end
