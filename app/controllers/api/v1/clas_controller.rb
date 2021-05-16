@@ -8,6 +8,11 @@ class Api::V1::ClasController < ApplicationController
     render json: @clas
   end
 
+  def classe_count
+    @total_classe = Cla.count
+    render json: @total_classe
+  end
+
   # GET /clas/1
   def show
     render json: @cla

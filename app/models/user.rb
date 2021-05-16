@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
-  # acts_as_paranoid
-    # validates_presence_of :email
-    # validates_uniqueness_of :email
+  acts_as_paranoid
+  validates_presence_of :email
+  validates_uniqueness_of :email
 
   mount_uploader :photo, PhotoUploader
   validates :email, presence: true, uniqueness: true
@@ -12,13 +12,14 @@ class User < ApplicationRecord
                 length: { minimum: 6 },
                 if: -> { new_record? || !password.nil? }
 
-    validates :nom, :prenom, presence: true, length: { minimum: 2, maximum: 250 }
+  validates :nom, :prenom, presence: true, length: { minimum: 2, maximum: 250 }
     # validates :age, presence: true, numericality: { only_integer: true, greater_than: 20, less_than_or_equal_to: 100 }
-    validates :sexe, :telephone, :bp, :datenaissance, :lieunaissance, :quartier, presence: true
+  validates :sexe, :telephone, :bp, :datenaissance, :lieunaissance, :quartier, presence: true
+  has_many :permission_users
+  has_many :permissions, through: :permission_users
+
 
   belongs_to :country
   belongs_to :role
-
-  has_many :permission_users
-  has_many :permissions, through: :permission_users
+  belongs_to :anneeacademique
 end

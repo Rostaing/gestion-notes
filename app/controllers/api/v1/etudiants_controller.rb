@@ -8,6 +8,11 @@ class Api::V1::EtudiantsController < ApplicationController
     render json: @etudiants
   end
 
+  def etudiant_count
+    @total_etudiant = Etudiant.count
+    render json: @total_etudiant
+  end
+
   # GET /etudiants/1
   def show
     render json: @etudiant

@@ -10,4 +10,5 @@ class Etudiant < ApplicationRecord
   belongs_to :anneeacademique
   has_many :notes, dependent: :destroy
   has_many :evaluations, through: :notes
+  has_many :bulletins, dependent: :destroy
 end

@@ -8,4 +8,5 @@ class Anneeacademique < ApplicationRecord
     has_many :clas, through: :ens_clas_matieres
     has_many :matieres, through: :ens_clas_matieres
     has_many :etudiants, dependent: :destroy
+    has_many :users
 end

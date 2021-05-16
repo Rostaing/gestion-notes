@@ -8,6 +8,11 @@ class Api::V1::EvaluationsController < ApplicationController
     render json: @evaluations
   end
 
+  def evaluation_count
+    @total_evaluation = Evaluation.count
+    render json: @total_evaluation
+  end
+
   # GET /evaluations/1
   def show
     render json: @evaluation

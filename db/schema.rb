@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_224658) do
+ActiveRecord::Schema.define(version: 2021_05_11_144137) do
 
   create_table "anneeacademiques", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
     t.string "libelle"
@@ -24,19 +24,17 @@ ActiveRecord::Schema.define(version: 2021_03_11_224658) do
   end
 
   create_table "bulletins", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
+    t.bigint "etudiant_id", null: false
     t.date "date_edition"
     t.date "date_retrait"
     t.float "moyenne_etudiant"
-    t.float "moyenne_max_clas"
-    t.float "moyenne_min_clas"
-    t.integer "effectif_clas"
+    t.float "moyenne_max_classe"
+    t.float "moyenne_min_classe"
+    t.integer "effectif_classe"
     t.integer "rang_etudiant"
     t.string "decision_conseil_prof"
-    t.bigint "etudiant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_bulletins_on_deleted_at"
     t.index ["etudiant_id"], name: "index_bulletins_on_etudiant_id"
   end
 
@@ -72,27 +70,6 @@ ActiveRecord::Schema.define(version: 2021_03_11_224658) do
     t.index ["cla_id"], name: "index_ens_clas_matieres_on_cla_id"
     t.index ["matiere_id"], name: "index_ens_clas_matieres_on_matiere_id"
     t.index ["user_id"], name: "index_ens_clas_matieres_on_user_id"
-  end
-
-  create_table "enseignants", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
-    t.string "matricule"
-    t.string "nom"
-    t.string "prenom"
-    t.string "sexe"
-    t.string "email"
-    t.string "telephone"
-    t.string "bp"
-    t.date "date_naissance"
-    t.string "lieu_naissance"
-    t.string "rue"
-    t.string "quartier"
-    t.bigint "country_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "photo"
-    t.datetime "deleted_at"
-    t.index ["country_id"], name: "index_enseignants_on_country_id"
-    t.index ["deleted_at"], name: "index_enseignants_on_deleted_at"
   end
 
   create_table "etudiants", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
@@ -245,7 +222,11 @@ ActiveRecord::Schema.define(version: 2021_03_11_224658) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "photo"
+    t.datetime "deleted_at"
+    t.bigint "anneeacademique_id", null: false
+    t.index ["anneeacademique_id"], name: "index_users_on_anneeacademique_id"
     t.index ["country_id"], name: "index_users_on_country_id"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 

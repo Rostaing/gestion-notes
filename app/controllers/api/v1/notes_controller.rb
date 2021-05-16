@@ -15,18 +15,46 @@ class Api::V1::NotesController < ApplicationController
 
   # POST /notes
   def create
-    @note = Note.insert_all(note_params)
+    
+    # Note.transaction do
+    #   @notes.each{ |note| Note.create(note_params) }
+    #   if @note.save!
+    #     render json: @note, status: :created, location: api_v1_note_url(@note)
+    #   else
+    #     render json: @note.errors, status: :unprocessable_entity
+    #   end
+    # end
 
-    if @note.save
-      render json: @note, status: :created, location: api_v1_note_url(@note)
-    else
-      render json: @note.errors, status: :unprocessable_entity
+    # @note = Note.new(note_params)
+    # @note.each do |note|
+    #   if note.save!
+    #     render json: note, status: :created, location: api_v1_note_url(@note)
+    #   else
+    #     render json: note.errors, status: :unprocessable_entity
+    #   end
+    # end
+    @erreur=false
+    @note = Note.new(note_params)
+    @note.each do |note|
+      if !note.save
+        @erreur=true
+      end
     end
+    render json: note, status: :created, location: api_v1_note_url(@note)
+    if @erreur
+      render json: note.errors, status: :unprocessable_entity
+    end
+    # @note = Note.new(note_params)
+    # if @note.save
+    #   render json: @note, status: :created, location: api_v1_note_url(@note)
+    # else
+    #   render json: @note.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /notes/1
   def update
-    if @note.update(note_params)
+    if @note.update(note_params) # update
       render json: @note
     else
       render json: @note.errors, status: :unprocessable_entity

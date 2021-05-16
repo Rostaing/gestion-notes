@@ -3,11 +3,23 @@ class Api::V1::BulletinsController < ApplicationController
 
   # GET /bulletins
   def index
-    @bulletins = Bulletin.all.order(created_at: :desc)
+    @bulletins = Bulletin.all
 
     render json: @bulletins
   end
 
+  def moyenne_etu
+    id= params[:id]
+    # ROUND(SUM(valeur*coefficient)/SUM(coefficient), 2) AS Moyenne
+    @records = ActiveRecord::Base.connection.execute("
+      SELECT *, ROUND(SUM(valeur*coefficient)/SUM(coefficient), 2) AS Moyenne
+      FROM moyenne_etudiant
+      WHERE etudiant_id='"+id+"'
+      ")
+    
+    render json: @records
+  end
+  
   # GET /bulletins/1
   def show
     render json: @bulletin
@@ -23,7 +35,7 @@ class Api::V1::BulletinsController < ApplicationController
       render json: @bulletin.errors, status: :unprocessable_entity
     end
   end
-
+ 
   # PATCH/PUT /bulletins/1
   def update
     if @bulletin.update(bulletin_params)
@@ -46,6 +58,6 @@ class Api::V1::BulletinsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bulletin_params
-      params.require(:bulletin).permit(:date_edition, :date_retrait, :moyenne_etudiant, :moyenne_max_clas, :moyenne_min_clas, :effectif_clas, :rang_etudiant, :decision_conseil_prof, :etudiant_id, :deleted_at, :mentionbulletin)
+      params.require(:bulletin).permit(:etudiant_id, :date_edition, :date_retrait, :moyenne_etudiant, :moyenne_max_classe, :moyenne_min_classe, :effectif_classe, :rang_etudiant, :decision_conseil_prof)
     end
 end

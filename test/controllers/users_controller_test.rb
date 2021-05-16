@@ -12,7 +12,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_url, params: { user: { bp: @user.bp, country_id: @user.country_id, datenaissance: @user.datenaissance, email: @user.email, lieunaissance: @user.lieunaissance, matricule: @user.matricule, nom: @user.nom, password: 'secret', password_confirmation: 'secret', prenom: @user.prenom, quartier: @user.quartier, role_id: @user.role_id, sexe: @user.sexe, telephone: @user.telephone } }, as: :json
+      post users_url, params: { user: { anneeacademique_id: @user.anneeacademique_id, bp: @user.bp, country_id: @user.country_id, datenaissance: @user.datenaissance, email: @user.email, lieunaissance: @user.lieunaissance, matricule: @user.matricule, nom: @user.nom, password: 'secret', password_confirmation: 'secret', prenom: @user.prenom, quartier: @user.quartier, role_id: @user.role_id, sexe: @user.sexe, telephone: @user.telephone } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { bp: @user.bp, country_id: @user.country_id, datenaissance: @user.datenaissance, email: @user.email, lieunaissance: @user.lieunaissance, matricule: @user.matricule, nom: @user.nom, password: 'secret', password_confirmation: 'secret', prenom: @user.prenom, quartier: @user.quartier, role_id: @user.role_id, sexe: @user.sexe, telephone: @user.telephone } }, as: :json
+    patch user_url(@user), params: { user: { anneeacademique_id: @user.anneeacademique_id, bp: @user.bp, country_id: @user.country_id, datenaissance: @user.datenaissance, email: @user.email, lieunaissance: @user.lieunaissance, matricule: @user.matricule, nom: @user.nom, password: 'secret', password_confirmation: 'secret', prenom: @user.prenom, quartier: @user.quartier, role_id: @user.role_id, sexe: @user.sexe, telephone: @user.telephone } }, as: :json
     assert_response 200
   end
 

@@ -8,6 +8,11 @@ class Api::V1::MatieresController < ApplicationController
     render json: @matieres
   end
 
+  def matiere_count
+    @total_matiere = Matiere.count
+    render json: @total_matiere
+  end
+
   # GET /matieres/1
   def show
     render json: @matiere

@@ -6,4 +6,5 @@ class AnneeacademiqueSerializer < ActiveModel::Serializer
   has_many :matieres
   has_many :etudiants
   has_many :users, through: :ens_clas_matieres
+  has_many :users
 end

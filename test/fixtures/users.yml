@@ -9,11 +9,12 @@ one:
   matricule: MyString
   telephone: MyString
   bp: MyString
-  datenaissance: 2021-03-11
+  datenaissance: 2021-03-15
   lieunaissance: MyString
   quartier: MyString
   country: one
   role: one
+  anneeacademique: one
 
 two:
   nom: MyString
@@ -24,8 +25,9 @@ two:
   matricule: MyString
   telephone: MyString
   bp: MyString
-  datenaissance: 2021-03-11
+  datenaissance: 2021-03-15
   lieunaissance: MyString
   quartier: MyString
   country: two
   role: two
+  anneeacademique: two
