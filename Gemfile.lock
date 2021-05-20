@@ -85,6 +85,9 @@ GEM
     concurrent-ruby (1.1.8)
     crass (1.0.6)
     erubi (1.10.0)
+    execute_sql (0.1.1)
+      rails
+      terminal-table
     ffi (1.14.2-x64-mingw32)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -160,11 +163,14 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     ssrf_filter (1.0.7)
+    terminal-table (3.0.1)
+      unicode-display_width (>= 1.1.1, < 3)
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2021.1)
       tzinfo (>= 1.0.0)
+    unicode-display_width (2.0.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -179,6 +185,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   carrierwave (~> 2.1)
+  execute_sql (~> 0.1.1)
   jwt
   mini_magick (~> 4.11)
   mysql2 (~> 0.5)

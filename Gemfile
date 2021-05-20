@@ -24,6 +24,7 @@ gem 'carrierwave', '~> 2.1'
 gem 'mini_magick', '~> 4.11'
 # gem 'simplest_status', '~> 1.0'
 gem 'paranoia', '~> 2.4', '>= 2.4.3'
+gem 'execute_sql', '~> 0.1.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

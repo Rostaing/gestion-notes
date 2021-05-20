@@ -7,16 +7,49 @@ class Api::V1::BulletinsController < ApplicationController
 
     render json: @bulletins
   end
-
+  
+  # CALCUL MOYENNE ETUDIANT
   def moyenne_etu
     id= params[:id]
     # ROUND(SUM(valeur*coefficient)/SUM(coefficient), 2) AS Moyenne
-    @records = ActiveRecord::Base.connection.execute("
-      SELECT *, ROUND(SUM(valeur*coefficient)/SUM(coefficient), 2) AS Moyenne
-      FROM moyenne_etudiant
-      WHERE etudiant_id='"+id+"'
-      ")
+
+    # @records = ActiveRecord::Base.connection.execute("
+    #   SELECT JSON_OBJECT
+    #  ('valeur', valeur,
+    #   'etudiant_id', etudiant_id, 
+    #   'matiere_id',matiere_id, 
+    #   'cla_id',cla_id, 
+    #   'anneeacademique_id',anneeacademique_id, 
+    #   'code',code, 
+    #   'libelle',libelle, 
+    #   'coefficient',coefficient
     
+    #   ),
+    #   ROUND(SUM(valeur*coefficient)/SUM(coefficient), 2) AS moyenne
+      
+      
+    #   FROM moyenne_etudiant
+    #   WHERE etudiant_id='"+id+"';
+    #   ")
+  @records = ActiveRecord::Base.connection.execute("SELECT CONCAT(
+      '[', 
+      GROUP_CONCAT(JSON_OBJECT(
+        'valeur', valeur, 
+        'etudiant_id', etudiant_id, 
+        'matiere_id',matiere_id, 
+        'cla_id',cla_id, 
+        'anneeacademique_id',anneeacademique_id, 
+        'code',code, 
+        'libelle',libelle, 
+        'coefficient',coefficient
+        
+        )), 
+      ']'
+  ),ROUND(SUM(valeur*coefficient)/SUM(coefficient), 2) AS 'moyenne'
+  
+    FROM moyenne_etudiant
+    WHERE etudiant_id='"+id+"';
+  ")
     render json: @records
   end
   
