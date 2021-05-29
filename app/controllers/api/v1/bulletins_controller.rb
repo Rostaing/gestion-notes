@@ -12,45 +12,31 @@ class Api::V1::BulletinsController < ApplicationController
   def moyenne_etu
     id= params[:id]
     # ROUND(SUM(valeur*coefficient)/SUM(coefficient), 2) AS Moyenne
-
-    # @records = ActiveRecord::Base.connection.execute("
-    #   SELECT JSON_OBJECT
-    #  ('valeur', valeur,
-    #   'etudiant_id', etudiant_id, 
-    #   'matiere_id',matiere_id, 
-    #   'cla_id',cla_id, 
-    #   'anneeacademique_id',anneeacademique_id, 
-    #   'code',code, 
-    #   'libelle',libelle, 
-    #   'coefficient',coefficient
-    
-    #   ),
-    #   ROUND(SUM(valeur*coefficient)/SUM(coefficient), 2) AS moyenne
-      
-      
-    #   FROM moyenne_etudiant
-    #   WHERE etudiant_id='"+id+"';
-    #   ")
-  @records = ActiveRecord::Base.connection.execute("SELECT CONCAT(
-      '[', 
-      GROUP_CONCAT(JSON_OBJECT(
-        'valeur', valeur, 
-        'etudiant_id', etudiant_id, 
-        'matiere_id',matiere_id, 
-        'cla_id',cla_id, 
-        'anneeacademique_id',anneeacademique_id, 
-        'code',code, 
-        'libelle',libelle, 
-        'coefficient',coefficient
+      @records = ActiveRecord::Base.connection.execute("
+        SELECT CONCAT(
+          '[', 
+          GROUP_CONCAT(JSON_OBJECT(
+            'pays',pays,
+            'nom_etudiant',nom_etudiant,
+            'prenom_etudiant',prenom_etudiant,
+            'classe',classe,
+            'matiere',matiere,
+            'coefficient',coefficient,
+            'note', note,
+            'annee_academique',annee_academique
+            )), 
+          ']'
+          ), ROUND(SUM(note*coefficient)/SUM(coefficient), 2) AS moyenne
         
-        )), 
-      ']'
-  ),ROUND(SUM(valeur*coefficient)/SUM(coefficient), 2) AS 'moyenne'
-  
-    FROM moyenne_etudiant
-    WHERE etudiant_id='"+id+"';
-  ")
-    render json: @records
+        FROM releve_notes
+        
+        WHERE etudiant_id='"+id+"'
+        
+      ")
+        
+        render json: @records
+
+    #*************************************************************
   end
   
   # GET /bulletins/1

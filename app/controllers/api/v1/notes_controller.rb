@@ -15,6 +15,14 @@ class Api::V1::NotesController < ApplicationController
 
   # POST /notes
   def create
+
+      @notes = Notes.create(group_params)
+      if @notes.all? { |note| note.persisted? }
+        render json: { success: true, message: "#{@notes.length} notes created" }
+      else
+        render_422 @notes, 'Could not save notes.'
+        render json: @note.errors, status: :unprocessable_entity
+      end
     
     # Note.transaction do
     #   @notes.each{ |note| Note.create(note_params) }
@@ -33,17 +41,19 @@ class Api::V1::NotesController < ApplicationController
     #     render json: note.errors, status: :unprocessable_entity
     #   end
     # end
-    @erreur=false
-    @note = Note.new(note_params)
-    @note.each do |note|
-      if !note.save
-        @erreur=true
-      end
-    end
-    render json: note, status: :created, location: api_v1_note_url(@note)
-    if @erreur
-      render json: note.errors, status: :unprocessable_entity
-    end
+
+    # @erreur=false
+    # @note = Note.new(note_params)
+    # @note.each do |note|
+    #   if !note.save
+    #     @erreur=true
+    #   end
+    # end
+    # render json: note, status: :created, location: api_v1_note_url(@note)
+    # if @erreur
+    #   render json: note.errors, status: :unprocessable_entity
+    # end
+
     # @note = Note.new(note_params)
     # if @note.save
     #   render json: @note, status: :created, location: api_v1_note_url(@note)

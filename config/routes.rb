@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   # get "/login", to: "users#login"
   get "/auto_login", to: "users#auto_login"
   get "/check_user", to: "users#check_user"
-  
+  get "/releve_notes/:id", to: "releve#releve_notes"
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :systemes

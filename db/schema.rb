@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_144137) do
+ActiveRecord::Schema.define(version: 2021_05_22_185452) do
 
   create_table "anneeacademiques", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
     t.string "libelle"
@@ -180,6 +180,25 @@ ActiveRecord::Schema.define(version: 2021_05_11_144137) do
     t.string "libelle"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "records", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
+    t.bigint "etudiant_id", null: false
+    t.bigint "cla_id", null: false
+    t.bigint "matiere_id", null: false
+    t.bigint "note_id", null: false
+    t.bigint "anneeacademique_id", null: false
+    t.date "date_edition"
+    t.date "dateretrait"
+    t.string "decisionconseilprof"
+    t.float "moyenne"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["anneeacademique_id"], name: "index_records_on_anneeacademique_id"
+    t.index ["cla_id"], name: "index_records_on_cla_id"
+    t.index ["etudiant_id"], name: "index_records_on_etudiant_id"
+    t.index ["matiere_id"], name: "index_records_on_matiere_id"
+    t.index ["note_id"], name: "index_records_on_note_id"
   end
 
   create_table "role_users", charset: "utf8", options: "ENGINE=MyISAM", force: :cascade do |t|
